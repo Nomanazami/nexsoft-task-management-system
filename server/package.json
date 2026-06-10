@@ -16,14 +16,14 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.5.2",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.5.0",
     "helmet": "^8.2.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.6.3",
     "morgan": "^1.11.0",
     "nanoid": "^5.1.11",
-    "zod": "^4.4.3"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
