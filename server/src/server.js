@@ -58,10 +58,11 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-await connectDb();
+const start = async () => {
+  await connectDb();
+  app.listen(env.PORT, () => {
+    console.log(`API listening on port ${env.PORT}`);
+  });
+};
 
-app.listen(env.PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`API listening on port ${env.PORT}`);
-});
-
+start();
