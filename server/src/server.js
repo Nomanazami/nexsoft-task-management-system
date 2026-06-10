@@ -22,10 +22,15 @@ app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: [
-      'https://nexsoft-task-management-system.vercel.app',
-      'http://localhost:5173'
-    ],
+    origin: function(origin, callback) {
+      if (!origin || 
+          origin.includes('nexsoft-task-management-system') || 
+          origin === 'http://localhost:5173') {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
