@@ -20,7 +20,7 @@ const router = Router();
 function setRefreshCookie(res, refreshToken) {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: env.NODE_ENV === "production" ? "none" : "lax",
     secure: env.NODE_ENV === "production",
     path: "/api/auth",
     maxAge: 1000 * 60 * 60 * 24 * 7,
@@ -28,7 +28,11 @@ function setRefreshCookie(res, refreshToken) {
 }
 
 function clearRefreshCookie(res) {
-  res.clearCookie("refreshToken", { path: "/api/auth" });
+  res.clearCookie("refreshToken", {
+    path: "/api/auth",
+    sameSite: env.NODE_ENV === "production" ? "none" : "lax",
+    secure: env.NODE_ENV === "production",
+  });
 }
 
 router.post(
